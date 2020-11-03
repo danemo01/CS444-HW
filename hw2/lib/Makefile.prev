@@ -1,0 +1,28 @@
+# Makefile for i386/linux C library  "make libxc.a"  "make install"
+
+# These sources are old C--
+CC = i386-gcc -D__ELF__
+AR = i386-ar
+CFLAGS =  -I/groups/ulab/pcdev/include
+#CFLAGS = -traditional -E -I../include
+
+# The only C library sources needed for kernel and debuggers--
+KLIB_OFILES = ctype.o scanf.o doscan.o strcmp.o strcat.o memcpy.o \
+		printf.o doprnt.o ecvt.o devio.o
+
+# Other C library functions for user programs
+OLIB_OFILES	= abs.o atoi.o \
+		fgets.o fprintf.o fputs.o \
+		index.o puts.o qsort.o \
+		rand.o rindex.o scanf.o sprintf.o \
+		strcpy.o strlen.o \
+		strncat.o strncmp.o strncpy.o \
+		getchar.o putchar.o sscanf.o fgetc.o fdoprnt.o
+
+all:		libc.a
+
+libc.a:	$(KLIB_OFILES) $(OLIB_OFILES)
+		rm -f libc.a
+	$(AR) rcs libc.a $(KLIB_OFILES) $(OLIB_OFILES)
+clean:
+		rm -f *.o libxc.a

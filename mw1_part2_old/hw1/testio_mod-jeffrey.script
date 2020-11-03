@@ -1,0 +1,86 @@
+Script started on Thu 24 Sep 2020 06:26:23 PM EDT
+tuser@tutor-vserver:~/testelf$ m[K,cr[K[K[K
+tuser@tutor-vserver:~/testelf$ <CR>
+bash: syntax error near unexpected token `newline'
+tuser@tutor-vserver:~/testelf$ <>
+bash: syntax error near unexpected token `newline'
+tuser@tutor-vserver:~/testelf$ CR
+bash: CR: command not found
+tuser@tutor-vserver:~/testelf$ cr
+bash: cr: command not found
+tuser@tutor-vserver:~/testelf$ <cr>
+bash: syntax error near unexpected token `newline'
+tuser@tutor-vserver:~/testelf$ clear
+[H[Jtuser@tutor-vserver:~/testelf$ mtip -ftestio.lnx[C[C[C ftestio.lnx[1Pftestio.lnx[C testio.lnx
+For command help, type ~?
+For help on args, rerun without args
+Code starts at 0x100100
+Using board # 1 
+
+Setting console dev to COM2Console: colour EGA+ 80x25
+COM1 at 0x03f8 (irq = 4) is a 16550A
+COM2 at 0x02f8 (irq = 3) is a 16550A
+
+                 Welcome to UMB Tutor for the PC
+   UMB Tutor is a 32-bit protected-mode PC debugger/downloader,
+       based on Linux, UMB Tutor for m68k, and remote gdb.
+UMB Tutor is free software and you are welcome to distribute copies
+of it under certain conditions.  There is no warranty for this program.
+The copyright and warranty provisions follow the Gnu general public
+license, available for view in gdb and elsewhere.  Full sources available.
+--bugs, suggestions, questions to eoneil@cs.umb.edu
+
+Exception 3 at EIP=00057a9b: Breakpoint
+Tutor> ~downloading testio.lnx
+
+
+.........Done.
+
+Download done, setting EIP to 100100.
+Tutor> <CNTL-J>        go 2 100100
+Running with device TTY1
+
+Trying simple write(4 chars)...
+hi!
+write of 4 returned 4
+<doing delay>
+Trying longer write (9 chars)
+abcdefghiwrite of 9 returned 9
+<doing delay>
+
+Trying write of 80-char string...
+AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZ[[\\]]^^__``aabbccddeeffgghh
+write returned 80
+<doing delay>
+
+Type 10 chars input to test typeahead while looping for delay...
+<doing delay>
+
+Got 0 chars into buf. Trying write of buf...
+
+Trying another 10 chars read right away...
+
+Got 0 chars on second read
+nothing in buffer
+
+
+Now turning echo off--
+
+Type 20 chars input, note lack of echoes...
+<doing delay>
+
+Trying write of buf...
+
+Asked for 20 characters; got 0
+Exception 3 at EIP=00100110: Breakpoint
+Tutor> Suspend handler: Suspending mtip, board #1--please return to it (fg command) as soon as possible
+
+[1]+  Stopped                 mtip -f testio.lnx
+tuser@tutor-vserver:~/testelf$ exit
+exit
+There are stopped jobs.
+tuser@tutor-vserver:~/testelf$ exit
+exit
+Continuing mtip on board 1
+
+Script done on Thu 24 Sep 2020 06:30:12 PM EDT

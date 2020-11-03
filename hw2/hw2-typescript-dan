@@ -1,0 +1,369 @@
+Script started on Tue 03 Nov 2020 04:27:33 PM EST
+]0;tuser@tutor-vserver: ~/cs444/hw2tuser@tutor-vserver:~/cs444/hw2$ ssh tuser[K[K[K[K[Kdotadan@users.cs.umb.edu
+dotadan@users.cs.umb.edu's password: 
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 4.4.0-193-generic x86_64)
+
+31 packages can be updated.
+24 updates are security updates.
+
+
+6 updates could not be installed automatically. For more details,
+see /var/log/unattended-upgrades/unattended-upgrades.log
+
+Authorized users only.
+
+Contact: operator@cs.umb.edu or 617-287-6480
+
+ f20 Renumbering CS and Math hosts will start soon.
+ Please don't worry about IP address changes, since
+ you are hereby warned in advance to expect them.
+
+Last login: Tue Nov  3 16:07:39 2020 from 73.114.217.63
+dotadan@itserver6:~$ l[Kcd cs444
+dotadan@itserver6:~/cs444$ cd hw2
+dotadan@itserver6:~/cs444/hw2$ cl[K[Kmake clean
+rm -f *.o *.lnx core 
+dotadan@itserver6:~/cs444/hw2$ ls -al
+total 184
+drwxr-xr-x 4 dotadan cs444-1G  4096 Nov  3 16:27 .
+drwxrws--- 7 dotadan cs444-1G  4096 Nov  3 16:10 ..
+-rw-r--r-- 1 dotadan cs444-1G   135 Nov  3 16:10 crt0.s
+-rw-r--r-- 1 dotadan cs444-1G 37376 Nov  3 16:10 .fuse_hidden0000017900000001
+-rw-r--r-- 1 dotadan cs444-1G 37376 Nov  3 16:10 hw2.doc
+-rw-r--r-- 1 dotadan cs444-1G  2001 Nov  3 16:10 io.c
+-rw-r--r-- 1 dotadan cs444-1G   411 Nov  3 16:10 ioconf.c
+-rw-r--r-- 1 dotadan cs444-1G   815 Nov  3 16:10 ioconf.h
+-rw-r--r-- 1 dotadan cs444-1G   741 Nov  3 16:10 io_public.h
+drwxr-xr-x 2 dotadan cs444-1G  4096 Nov  3 16:10 lib
+-rw-r--r-- 1 dotadan cs444-1G   101 Nov  3 16:10 .~lock.hw2.doc#
+-rw-r--r-- 1 dotadan cs444-1G  2766 Nov  3 16:10 makefile
+drwxr-xr-x 2 dotadan cs444-1G  4096 Nov  3 16:10 queue
+-rw-r--r-- 1 dotadan cs444-1G   395 Nov  3 16:10 startup0.s
+-rw-r--r-- 1 dotadan cs444-1G   447 Nov  3 16:10 startup.c
+lrwxrwxrwx 1 dotadan ugrad       11 Nov  3 16:14 syms -> testio.syms
+-rw-r--r-- 1 dotadan cs444-1G   225 Nov  3 16:10 sysentry.s
+-rw-r--r-- 1 dotadan cs444-1G   122 Nov  3 16:10 test1.c
+-rw-r--r-- 1 dotadan cs444-1G  1781 Nov  3 16:10 test1.syms
+-rw-r--r-- 1 dotadan cs444-1G  3037 Nov  3 16:10 testio.c
+-rw-r--r-- 1 dotadan ugrad     1975 Nov  3 16:14 testio.syms
+-rw-r--r-- 1 dotadan cs444-1G     0 Nov  3 16:10 tsyscall.h
+-rw-r--r-- 1 dotadan cs444-1G   583 Nov  3 16:10 tsystm.h
+-rw-r--r-- 1 dotadan cs444-1G  7268 Nov  3 16:10 tty.c
+-rw-r--r-- 1 dotadan cs444-1G   744 Nov  3 16:10 tty.h
+-rw-r--r-- 1 dotadan cs444-1G   415 Nov  3 16:10 tty_public.h
+-rw-r--r-- 1 dotadan cs444-1G   183 Nov  3 16:10 tunistd.h
+-rw-r--r-- 1 dotadan cs444-1G  2267 Nov  3 16:10 tunix.c
+-rw-r--r-- 1 dotadan cs444-1G  1795 Nov  3 16:10 ulib.s
+dotadan@itserver6:~/cs444/hw2$ make -al[K[K[KU=t[Ktestio
+makefile:85: warning: overriding recipe for target 'testio.o'
+makefile:51: warning: ignoring old recipe for target 'testio.o'
+as --32 -c -o startup0.o startup0.s
+gcc -gdwarf-2 -gstrict-dwarf -march=i586 -m32 -fno-builtin -fno-stack-protector -nostdlib     -c -Wall -I/home/cheungr/serl/tutor-linux/include -c -o startup.o startup.c
+gcc -gdwarf-2 -gstrict-dwarf -march=i586 -m32 -fno-builtin -fno-stack-protector -nostdlib     -c -Wall -I/home/cheungr/serl/tutor-linux/include -c -o tunix.o  tunix.c
+as --32 -c -o sysentry.o sysentry.s
+sysentry.s: Assembler messages:
+sysentry.s: Warning: end of file not at end of a line; newline inserted
+gcc -gdwarf-2 -gstrict-dwarf -march=i586 -m32 -fno-builtin -fno-stack-protector -nostdlib     -c -Wall -I/home/cheungr/serl/tutor-linux/include -c -o io.o io.c
+[01m[Kio.c:[m[K In function ‘[01m[Ksysexit[m[K’:
+[01m[Kio.c:60:3:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kkprintf[m[K’ [-Wimplicit-function-declaration]
+   kprintf("\nEXIT CODE is %d\n", exitcode);
+[01;32m[K   ^[m[K
+[01m[Kio.c:61:3:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kuexit[m[K’ [-Wimplicit-function-declaration]
+   uexit();
+[01;32m[K   ^[m[K
+gcc -gdwarf-2 -gstrict-dwarf -march=i586 -m32 -fno-builtin -fno-stack-protector -nostdlib     -c -Wall -I/home/cheungr/serl/tutor-linux/include -c -o tty.o tty.c
+gcc -gdwarf-2 -gstrict-dwarf -march=i586 -m32 -fno-builtin -fno-stack-protector -nostdlib     -c -Wall -I/home/cheungr/serl/tutor-linux/include -c -o ioconf.o ioconf.c
+gcc -gdwarf-2 -gstrict-dwarf -march=i586 -m32 -fno-builtin -fno-stack-protector -nostdlib     -c -Wall -I/home/cheungr/serl/tutor-linux/include -c -o queue.o queue/queue.c
+as --32 -c -o crt0.o crt0.s
+crt0.s: Assembler messages:
+crt0.s: Warning: end of file not at end of a line; newline inserted
+gcc -gdwarf-2 -gstrict-dwarf -march=i586 -m32 -fno-builtin -fno-stack-protector -nostdlib     -c -Wall -I/home/cheungr/serl/tutor-linux/include -c -o testio.o  testio.c
+[01m[Ktestio.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ktestio.c:44:9:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kwrite[m[K’ [-Wimplicit-function-declaration]
+   got = write(ldev,"hi!\n",4);
+[01;32m[K         ^[m[K
+[01m[Ktestio.c:62:9:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kread[m[K’ [-Wimplicit-function-declaration]
+   got = read(ldev, buf, 10); /* should wait for all 10 chars, once fixed */
+[01;32m[K         ^[m[K
+as --32 -c -o ulib.o ulib.s
+ld -m elf_i386 -N -Ttext 100100 -o testio.lnx \
+  startup0.o startup.o tunix.o sysentry.o io.o tty.o ioconf.o queue.o crt0.o testio.o ulib.o /home/cheungr/serl/tutor-linux/libc/libc.a
+rm -f syms;nm -n testio.lnx>testio.syms;ln -s testio.syms syms
+dotadan@itserver6:~/cs444/hw2$ exit
+logout
+Connection to users.cs.umb.edu closed.
+]0;tuser@tutor-vserver: ~/cs444/hw2tuser@tutor-vserver:~/cs444/hw2$ ssh dotadan@users.cs.umb.edu:cs444/hw2 .[K[K[K[K[Khw2[C dotadan@users.cs.umb.edu:cs444/hw2- dotadan@users.cs.umb.edu:cs444/hw2r dotadan@users.cs.umb.edu:cs444/hw2[1P[1P[1@c[1@p[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C .
+dotadan@users.cs.umb.edu's password: 
+startup.o                                                                                                   0%    0     0.0KB/s   --:-- ETAstartup.o                                                                                                 100% 2080     2.0KB/s   00:00    
+ulib.s                                                                                                      0%    0     0.0KB/s   --:-- ETAulib.s                                                                                                    100% 1795     1.8KB/s   00:00    
+.~lock.hw2.doc#                                                                                             0%    0     0.0KB/s   --:-- ETA.~lock.hw2.doc#                                                                                           100%  101     0.1KB/s   00:00    
+tty.c                                                                                                       0%    0     0.0KB/s   --:-- ETAtty.c                                                                                                     100% 7268     7.1KB/s   00:00    
+sscanf.o                                                                                                    0%    0     0.0KB/s   --:-- ETAsscanf.o                                                                                                  100% 2828     2.8KB/s   00:00    
+irq13.s                                                                                                     0%    0     0.0KB/s   --:-- ETAirq13.s                                                                                                   100%  492     0.5KB/s   00:00    
+labs.c                                                                                                      0%    0     0.0KB/s   --:-- ETAlabs.c                                                                                                    100%  372     0.4KB/s   00:00    
+startup.o                                                                                                   0%    0     0.0KB/s   --:-- ETAstartup.o                                                                                                 100% 2088     2.0KB/s   00:00    
+strchr.o                                                                                                    0%    0     0.0KB/s   --:-- ETAstrchr.o                                                                                                  100% 2120     2.1KB/s   00:00    
+bootparams.o                                                                                                0%    0     0.0KB/s   --:-- ETAbootparams.o                                                                                              100% 4136     4.0KB/s   00:00    
+memset.o                                                                                                    0%    0     0.0KB/s   --:-- ETAmemset.o                                                                                                  100% 2152     2.1KB/s   00:00    
+fdoprnt.c                                                                                                   0%    0     0.0KB/s   --:-- ETAfdoprnt.c                                                                                                 100% 8179     8.0KB/s   00:00    
+atoi.c                                                                                                      0%    0     0.0KB/s   --:-- ETAatoi.c                                                                                                    100%  631     0.6KB/s   00:00    
+Makefile                                                                                                    0%    0     0.0KB/s   --:-- ETAMakefile                                                                                                  100% 1808     1.8KB/s   00:00    
+irq5.s                                                                                                      0%    0     0.0KB/s   --:-- ETAirq5.s                                                                                                    100%  500     0.5KB/s   00:01    
+puts.c                                                                                                      0%    0     0.0KB/s   --:-- ETAputs.c                                                                                                    100%  548     0.5KB/s   00:00    
+fscanf.c                                                                                                    0%    0     0.0KB/s   --:-- ETAfscanf.c                                                                                                  100% 1433     1.4KB/s   00:00    
+rindex.c                                                                                                    0%    0     0.0KB/s   --:-- ETArindex.c                                                                                                  100%  248     0.2KB/s   00:00    
+strstr.c                                                                                                    0%    0     0.0KB/s   --:-- ETAstrstr.c                                                                                                  100%  934     0.9KB/s   00:00    
+scanf.c                                                                                                     0%    0     0.0KB/s   --:-- ETAscanf.c                                                                                                   100% 1970     1.9KB/s   00:00    
+putchar.o                                                                                                   0%    0     0.0KB/s   --:-- ETAputchar.o                                                                                                 100% 2392     2.3KB/s   00:00    
+atoi.o                                                                                                      0%    0     0.0KB/s   --:-- ETAatoi.o                                                                                                    100% 2224     2.2KB/s   00:00    
+fputc.o                                                                                                     0%    0     0.0KB/s   --:-- ETAfputc.o                                                                                                   100% 2096     2.1KB/s   00:00    
+devio.c                                                                                                     0%    0     0.0KB/s   --:-- ETAdevio.c                                                                                                   100% 3964     3.9KB/s   00:00    
+fprintf.c                                                                                                   0%    0     0.0KB/s   --:-- ETAfprintf.c                                                                                                 100%  627     0.6KB/s   00:00    
+startup0.o                                                                                                  0%    0     0.0KB/s   --:-- ETAstartup0.o                                                                                                100%  560     0.6KB/s   00:00    
+devio.o                                                                                                     0%    0     0.0KB/s   --:-- ETAdevio.o                                                                                                   100% 8260     8.1KB/s   00:00    
+fprintf.o                                                                                                   0%    0     0.0KB/s   --:-- ETAfprintf.o                                                                                                 100% 2464     2.4KB/s   00:00    
+abs.o                                                                                                       0%    0     0.0KB/s   --:-- ETAabs.o                                                                                                     100% 1968     1.9KB/s   00:00    
+fputs.o                                                                                                     0%    0     0.0KB/s   --:-- ETAfputs.o                                                                                                   100% 2212     2.2KB/s   00:00    
+strncat.c                                                                                                   0%    0     0.0KB/s   --:-- ETAstrncat.c                                                                                                 100%  636     0.6KB/s   00:00    
+irq0.s                                                                                                      0%    0     0.0KB/s   --:-- ETAirq0.s                                                                                                    100%  500     0.5KB/s   00:00    
+startup0.s                                                                                                  0%    0     0.0KB/s   --:-- ETAstartup0.s                                                                                                100%  331     0.3KB/s   00:00    
+kprintf.c.sav                                                                                               0%    0     0.0KB/s   --:-- ETAkprintf.c.sav                                                                                             100%  534     0.5KB/s   00:00    
+strchr.c                                                                                                    0%    0     0.0KB/s   --:-- ETAstrchr.c                                                                                                  100%  647     0.6KB/s   00:00    
+irq13.o                                                                                                     0%    0     0.0KB/s   --:-- ETAirq13.o                                                                                                   100%  608     0.6KB/s   00:00    
+mmu.c                                                                                                       0%    0     0.0KB/s   --:-- ETAmmu.c                                                                                                     100% 1318     1.3KB/s   00:00    
+qsort.c                                                                                                     0%    0     0.0KB/s   --:-- ETAqsort.c                                                                                                   100% 2610     2.6KB/s   00:00    
+fputs.c                                                                                                     0%    0     0.0KB/s   --:-- ETAfputs.c                                                                                                   100%  474     0.5KB/s   00:00    
+irq1.s                                                                                                      0%    0     0.0KB/s   --:-- ETAirq1.s                                                                                                    100%  500     0.5KB/s   00:00    
+irq6.s                                                                                                      0%    0     0.0KB/s   --:-- ETAirq6.s                                                                                                    100%  500     0.5KB/s   00:00    
+getchar.o                                                                                                   0%    0     0.0KB/s   --:-- ETAgetchar.o                                                                                                 100% 2360     2.3KB/s   00:00    
+irq3.s                                                                                                      0%    0     0.0KB/s   --:-- ETAirq3.s                                                                                                    100%  499     0.5KB/s   00:00    
+abs.c                                                                                                       0%    0     0.0KB/s   --:-- ETAabs.c                                                                                                     100%  366     0.4KB/s   00:00    
+support.s.sav                                                                                               0%    0     0.0KB/s   --:-- ETAsupport.s.sav                                                                                             100%  558     0.5KB/s   00:00    
+irq6.o                                                                                                      0%    0     0.0KB/s   --:-- ETAirq6.o                                                                                                    100%  604     0.6KB/s   00:00    
+ecvt.s                                                                                                      0%    0     0.0KB/s   --:-- ETAecvt.s                                                                                                    100% 6983     6.8KB/s   00:00    
+strcat.c                                                                                                    0%    0     0.0KB/s   --:-- ETAstrcat.c                                                                                                  100%  244     0.2KB/s   00:00    
+irq7.o                                                                                                      0%    0     0.0KB/s   --:-- ETAirq7.o                                                                                                    100%  604     0.6KB/s   00:00    
+strnlen.o                                                                                                   0%    0     0.0KB/s   --:-- ETAstrnlen.o                                                                                                 100% 2156     2.1KB/s   00:00    
+startup1.s                                                                                                  0%    0     0.0KB/s   --:-- ETAstartup1.s                                                                                                100%  339     0.3KB/s   00:00    
+strlen.o                                                                                                    0%    0     0.0KB/s   --:-- ETAstrlen.o                                                                                                  100% 2092     2.0KB/s   00:01    
+irq3.o                                                                                                      0%    0     0.0KB/s   --:-- ETAirq3.o                                                                                                    100%  604     0.6KB/s   00:00    
+printf.o                                                                                                    0%    0     0.0KB/s   --:-- ETAprintf.o                                                                                                  100% 2744     2.7KB/s   00:00    
+irq1.o                                                                                                      0%    0     0.0KB/s   --:-- ETAirq1.o                                                                                                    100%  604     0.6KB/s   00:00    
+fgets.o                                                                                                     0%    0     0.0KB/s   --:-- ETAfgets.o                                                                                                   100% 2288     2.2KB/s   00:00    
+libc.a                                                                                                      0%    0     0.0KB/s   --:-- ETAlibc.a                                                                                                    100%  151KB 150.7KB/s   00:00    
+strcat.o                                                                                                    0%    0     0.0KB/s   --:-- ETAstrcat.o                                                                                                  100% 2108     2.1KB/s   00:00    
+printf.c                                                                                                    0%    0     0.0KB/s   --:-- ETAprintf.c                                                                                                  100%  307     0.3KB/s   00:00    
+puts.o                                                                                                      0%    0     0.0KB/s   --:-- ETAputs.o                                                                                                    100% 2468     2.4KB/s   00:00    
+support.s                                                                                                   0%    0     0.0KB/s   --:-- ETAsupport.s                                                                                                 100%  552     0.5KB/s   00:00    
+doprnt.c                                                                                                    0%    0     0.0KB/s   --:-- ETAdoprnt.c                                                                                                  100% 8542     8.3KB/s   00:00    
+Makefile.prev                                                                                               0%    0     0.0KB/s   --:-- ETAMakefile.prev                                                                                             100%  798     0.8KB/s   00:00    
+memcmp.o                                                                                                    0%    0     0.0KB/s   --:-- ETAmemcmp.o                                                                                                  100% 2208     2.2KB/s   00:00    
+cpureg.s                                                                                                    0%    0     0.0KB/s   --:-- ETAcpureg.s                                                                                                  100% 1845     1.8KB/s   00:00    
+strcpy.o                                                                                                    0%    0     0.0KB/s   --:-- ETAstrcpy.o                                                                                                  100% 2080     2.0KB/s   00:00    
+memcpy.c                                                                                                    0%    0     0.0KB/s   --:-- ETAmemcpy.c                                                                                                  100%  579     0.6KB/s   00:00    
+cpu.o                                                                                                       0%    0     0.0KB/s   --:-- ETAcpu.o                                                                                                     100% 4340     4.2KB/s   00:00    
+startup.c                                                                                                   0%    0     0.0KB/s   --:-- ETAstartup.c                                                                                                 100%  319     0.3KB/s   00:00    
+scanf.o                                                                                                     0%    0     0.0KB/s   --:-- ETAscanf.o                                                                                                   100% 2972     2.9KB/s   00:00    
+strncpy.o                                                                                                   0%    0     0.0KB/s   --:-- ETAstrncpy.o                                                                                                 100% 2208     2.2KB/s   00:00    
+strcpy.c                                                                                                    0%    0     0.0KB/s   --:-- ETAstrcpy.c                                                                                                  100%  401     0.4KB/s   00:00    
+irq12.o                                                                                                     0%    0     0.0KB/s   --:-- ETAirq12.o                                                                                                   100%  608     0.6KB/s   00:00    
+devio.c.sav                                                                                                 0%    0     0.0KB/s   --:-- ETAdevio.c.sav                                                                                               100% 3428     3.4KB/s   00:00    
+pic.c                                                                                                       0%    0     0.0KB/s   --:-- ETApic.c                                                                                                     100% 2016     2.0KB/s   00:00    
+strncmp.o                                                                                                   0%    0     0.0KB/s   --:-- ETAstrncmp.o                                                                                                 100% 2160     2.1KB/s   00:00    
+devtab.c                                                                                                    0%    0     0.0KB/s   --:-- ETAdevtab.c                                                                                                  100%  589     0.6KB/s   00:00    
+irq7.s                                                                                                      0%    0     0.0KB/s   --:-- ETAirq7.s                                                                                                    100%  500     0.5KB/s   00:00    
+atol.c                                                                                                      0%    0     0.0KB/s   --:-- ETAatol.c                                                                                                    100%  646     0.6KB/s   00:00    
+strncpy.c                                                                                                   0%    0     0.0KB/s   --:-- ETAstrncpy.c                                                                                                 100%  690     0.7KB/s   00:00    
+portio.s                                                                                                    0%    0     0.0KB/s   --:-- ETAportio.s                                                                                                  100%  653     0.6KB/s   00:00    
+strcmp.o                                                                                                    0%    0     0.0KB/s   --:-- ETAstrcmp.o                                                                                                  100% 2140     2.1KB/s   00:00    
+rand.c                                                                                                      0%    0     0.0KB/s   --:-- ETArand.c                                                                                                    100%  461     0.5KB/s   00:00    
+irq4.o                                                                                                      0%    0     0.0KB/s   --:-- ETAirq4.o                                                                                                    100%  604     0.6KB/s   00:00    
+index.c                                                                                                     0%    0     0.0KB/s   --:-- ETAindex.c                                                                                                   100%  219     0.2KB/s   00:00    
+irq15.s                                                                                                     0%    0     0.0KB/s   --:-- ETAirq15.s                                                                                                   100%  492     0.5KB/s   00:00    
+ctype_.o                                                                                                    0%    0     0.0KB/s   --:-- ETActype_.o                                                                                                  100% 1716     1.7KB/s   00:00    
+irq8.s                                                                                                      0%    0     0.0KB/s   --:-- ETAirq8.s                                                                                                    100%  500     0.5KB/s   00:00    
+irq14.s                                                                                                     0%    0     0.0KB/s   --:-- ETAirq14.s                                                                                                   100%  492     0.5KB/s   00:00    
+doprnt.o                                                                                                    0%    0     0.0KB/s   --:-- ETAdoprnt.o                                                                                                  100% 7188     7.0KB/s   00:00    
+bzero.c                                                                                                     0%    0     0.0KB/s   --:-- ETAbzero.c                                                                                                   100%  462     0.5KB/s   00:00    
+ecvt.c                                                                                                      0%    0     0.0KB/s   --:-- ETAecvt.c                                                                                                    100% 1785     1.7KB/s   00:00    
+strcmp.c                                                                                                    0%    0     0.0KB/s   --:-- ETAstrcmp.c                                                                                                  100%  527     0.5KB/s   00:00    
+qsort.o                                                                                                     0%    0     0.0KB/s   --:-- ETAqsort.o                                                                                                   100% 4064     4.0KB/s   00:00    
+putchar.c                                                                                                   0%    0     0.0KB/s   --:-- ETAputchar.c                                                                                                 100%   89     0.1KB/s   00:00    
+memset.c                                                                                                    0%    0     0.0KB/s   --:-- ETAmemset.c                                                                                                  100%  562     0.6KB/s   00:00    
+memcmp.c                                                                                                    0%    0     0.0KB/s   --:-- ETAmemcmp.c                                                                                                  100%  669     0.7KB/s   00:00    
+gets.c                                                                                                      0%    0     0.0KB/s   --:-- ETAgets.c                                                                                                    100%  504     0.5KB/s   00:00    
+irq5.o                                                                                                      0%    0     0.0KB/s   --:-- ETAirq5.o                                                                                                    100%  604     0.6KB/s   00:00    
+fgetc.o                                                                                                     0%    0     0.0KB/s   --:-- ETAfgetc.o                                                                                                   100% 2128     2.1KB/s   00:00    
+memcpy.o                                                                                                    0%    0     0.0KB/s   --:-- ETAmemcpy.o                                                                                                  100% 2196     2.1KB/s   00:00    
+irq14.o                                                                                                     0%    0     0.0KB/s   --:-- ETAirq14.o                                                                                                   100%  608     0.6KB/s   00:00    
+ctype.c                                                                                                     0%    0     0.0KB/s   --:-- ETActype.c                                                                                                   100% 1218     1.2KB/s   00:00    
+bzero.o                                                                                                     0%    0     0.0KB/s   --:-- ETAbzero.o                                                                                                   100% 2128     2.1KB/s   00:00    
+ecvt.o                                                                                                      0%    0     0.0KB/s   --:-- ETAecvt.o                                                                                                    100% 4364     4.3KB/s   00:00    
+strncat.o                                                                                                   0%    0     0.0KB/s   --:-- ETAstrncat.o                                                                                                 100% 2196     2.1KB/s   00:00    
+irq11.s                                                                                                     0%    0     0.0KB/s   --:-- ETAirq11.s                                                                                                   100%  492     0.5KB/s   00:00    
+strrchr.c                                                                                                   0%    0     0.0KB/s   --:-- ETAstrrchr.c                                                                                                 100%  670     0.7KB/s   00:00    
+irq8.o                                                                                                      0%    0     0.0KB/s   --:-- ETAirq8.o                                                                                                    100%  604     0.6KB/s   00:00    
+memchr.c                                                                                                    0%    0     0.0KB/s   --:-- ETAmemchr.c                                                                                                  100%  659     0.6KB/s   00:00    
+kprintf.c                                                                                                   0%    0     0.0KB/s   --:-- ETAkprintf.c                                                                                                 100%  421     0.4KB/s   00:00    
+getchar.c                                                                                                   0%    0     0.0KB/s   --:-- ETAgetchar.c                                                                                                 100%  109     0.1KB/s   00:00    
+irq10.s                                                                                                     0%    0     0.0KB/s   --:-- ETAirq10.s                                                                                                   100%  492     0.5KB/s   00:00    
+fscanf.o                                                                                                    0%    0     0.0KB/s   --:-- ETAfscanf.o                                                                                                  100% 2904     2.8KB/s   00:00    
+irq12.s                                                                                                     0%    0     0.0KB/s   --:-- ETAirq12.s                                                                                                   100%  492     0.5KB/s   00:00    
+irq9.o                                                                                                      0%    0     0.0KB/s   --:-- ETAirq9.o                                                                                                    100%  604     0.6KB/s   00:00    
+fgets.c                                                                                                     0%    0     0.0KB/s   --:-- ETAfgets.c                                                                                                   100%  891     0.9KB/s   00:00    
+strnlen.c                                                                                                   0%    0     0.0KB/s   --:-- ETAstrnlen.c                                                                                                 100%  491     0.5KB/s   00:01    
+strstr.o                                                                                                    0%    0     0.0KB/s   --:-- ETAstrstr.o                                                                                                  100% 2212     2.2KB/s   00:00    
+doscan.c                                                                                                    0%    0     0.0KB/s   --:-- ETAdoscan.c                                                                                                  100% 5873     5.7KB/s   00:00    
+bootparams.s                                                                                                0%    0     0.0KB/s   --:-- ETAbootparams.s                                                                                              100% 3920     3.8KB/s   00:00    
+cpureg.o                                                                                                    0%    0     0.0KB/s   --:-- ETAcpureg.o                                                                                                  100% 1108     1.1KB/s   00:00    
+irq10.o                                                                                                     0%    0     0.0KB/s   --:-- ETAirq10.o                                                                                                   100%  608     0.6KB/s   00:00    
+strncmp.c                                                                                                   0%    0     0.0KB/s   --:-- ETAstrncmp.c                                                                                                 100%  562     0.6KB/s   00:00    
+gets.o                                                                                                      0%    0     0.0KB/s   --:-- ETAgets.o                                                                                                    100% 2512     2.5KB/s   00:00    
+atol.o                                                                                                      0%    0     0.0KB/s   --:-- ETAatol.o                                                                                                    100% 2252     2.2KB/s   00:00    
+strrchr.o                                                                                                   0%    0     0.0KB/s   --:-- ETAstrrchr.o                                                                                                 100% 2160     2.1KB/s   00:00    
+atof.c                                                                                                      0%    0     0.0KB/s   --:-- ETAatof.c                                                                                                    100% 1073     1.1KB/s   00:00    
+fdoprnt.o                                                                                                   0%    0     0.0KB/s   --:-- ETAfdoprnt.o                                                                                                 100% 6912     6.8KB/s   00:00    
+irq2.s                                                                                                      0%    0     0.0KB/s   --:-- ETAirq2.s                                                                                                    100%  500     0.5KB/s   00:00    
+cpu.c                                                                                                       0%    0     0.0KB/s   --:-- ETAcpu.c                                                                                                     100% 2027     2.0KB/s   00:00    
+strlen.c                                                                                                    0%    0     0.0KB/s   --:-- ETAstrlen.c                                                                                                  100%  411     0.4KB/s   00:00    
+labs.o                                                                                                      0%    0     0.0KB/s   --:-- ETAlabs.o                                                                                                    100% 2004     2.0KB/s   00:00    
+sscanf.c                                                                                                    0%    0     0.0KB/s   --:-- ETAsscanf.c                                                                                                  100% 1196     1.2KB/s   00:00    
+rand.o                                                                                                      0%    0     0.0KB/s   --:-- ETArand.o                                                                                                    100% 2432     2.4KB/s   00:00    
+kprintf.o                                                                                                   0%    0     0.0KB/s   --:-- ETAkprintf.o                                                                                                 100% 2936     2.9KB/s   00:00    
+doscan.o                                                                                                    0%    0     0.0KB/s   --:-- ETAdoscan.o                                                                                                  100% 6988     6.8KB/s   00:00    
+irq11.o                                                                                                     0%    0     0.0KB/s   --:-- ETAirq11.o                                                                                                   100%  608     0.6KB/s   00:00    
+irq9.s                                                                                                      0%    0     0.0KB/s   --:-- ETAirq9.s                                                                                                    100%  500     0.5KB/s   00:00    
+sprintf.c                                                                                                   0%    0     0.0KB/s   --:-- ETAsprintf.c                                                                                                 100%  796     0.8KB/s   00:00    
+irq0.o                                                                                                      0%    0     0.0KB/s   --:-- ETAirq0.o                                                                                                    100%  604     0.6KB/s   00:00    
+fputc.c                                                                                                     0%    0     0.0KB/s   --:-- ETAfputc.c                                                                                                   100%  534     0.5KB/s   00:00    
+fgetc.c                                                                                                     0%    0     0.0KB/s   --:-- ETAfgetc.c                                                                                                   100%  485     0.5KB/s   00:00    
+sprintf.o                                                                                                   0%    0     0.0KB/s   --:-- ETAsprintf.o                                                                                                 100% 2752     2.7KB/s   00:00    
+memchr.o                                                                                                    0%    0     0.0KB/s   --:-- ETAmemchr.o                                                                                                  100% 2160     2.1KB/s   00:00    
+mmu.o                                                                                                       0%    0     0.0KB/s   --:-- ETAmmu.o                                                                                                     100% 3004     2.9KB/s   00:00    
+irq4.s                                                                                                      0%    0     0.0KB/s   --:-- ETAirq4.s                                                                                                    100%  496     0.5KB/s   00:00    
+support.o                                                                                                   0%    0     0.0KB/s   --:-- ETAsupport.o                                                                                                 100%  616     0.6KB/s   00:00    
+portio.o                                                                                                    0%    0     0.0KB/s   --:-- ETAportio.o                                                                                                  100%  504     0.5KB/s   00:00    
+irq15.o                                                                                                     0%    0     0.0KB/s   --:-- ETAirq15.o                                                                                                   100%  608     0.6KB/s   00:00    
+ctype_.c                                                                                                    0%    0     0.0KB/s   --:-- ETActype_.c                                                                                                  100%  859     0.8KB/s   00:01    
+startup1.o                                                                                                  0%    0     0.0KB/s   --:-- ETAstartup1.o                                                                                                100%  612     0.6KB/s   00:00    
+pic.o                                                                                                       0%    0     0.0KB/s   --:-- ETApic.o                                                                                                     100% 3300     3.2KB/s   00:00    
+testio.syms                                                                                                 0%    0     0.0KB/s   --:-- ETAtestio.syms                                                                                               100% 1975     1.9KB/s   00:00    
+startup0.o                                                                                                  0%    0     0.0KB/s   --:-- ETAstartup0.o                                                                                                100%  584     0.6KB/s   00:00    
+testio.o                                                                                                    0%    0     0.0KB/s   --:-- ETAtestio.o                                                                                                  100% 6756     6.6KB/s   00:00    
+io.c                                                                                                        0%    0     0.0KB/s   --:-- ETAio.c                                                                                                      100% 2001     2.0KB/s   00:00    
+queue.o                                                                                                     0%    0     0.0KB/s   --:-- ETAqueue.o                                                                                                   100% 4472     4.4KB/s   00:00    
+ulib.o                                                                                                      0%    0     0.0KB/s   --:-- ETAulib.o                                                                                                    100%  568     0.6KB/s   00:00    
+startup0.s                                                                                                  0%    0     0.0KB/s   --:-- ETAstartup0.s                                                                                                100%  395     0.4KB/s   00:00    
+hw2.doc                                                                                                     0%    0     0.0KB/s   --:-- ETAhw2.doc                                                                                                   100%   37KB  36.5KB/s   00:00    
+test1.syms                                                                                                  0%    0     0.0KB/s   --:-- ETAtest1.syms                                                                                                100% 1781     1.7KB/s   00:00    
+tty.h                                                                                                       0%    0     0.0KB/s   --:-- ETAtty.h                                                                                                     100%  744     0.7KB/s   00:00    
+tunix.o                                                                                                     0%    0     0.0KB/s   --:-- ETAtunix.o                                                                                                   100% 4608     4.5KB/s   00:00    
+testio.lnx                                                                                                  0%    0     0.0KB/s   --:-- ETAtestio.lnx                                                                                                100%   34KB  33.9KB/s   00:00    
+testio.c                                                                                                    0%    0     0.0KB/s   --:-- ETAtestio.c                                                                                                  100% 3037     3.0KB/s   00:00    
+sysentry.s                                                                                                  0%    0     0.0KB/s   --:-- ETAsysentry.s                                                                                                100%  225     0.2KB/s   00:00    
+crt0.o                                                                                                      0%    0     0.0KB/s   --:-- ETAcrt0.o                                                                                                    100%  584     0.6KB/s   00:00    
+startup.c                                                                                                   0%    0     0.0KB/s   --:-- ETAstartup.c                                                                                                 100%  447     0.4KB/s   00:00    
+.fuse_hidden0000017900000001                                                                                0%    0     0.0KB/s   --:-- ETA.fuse_hidden0000017900000001                                                                              100%   37KB  36.5KB/s   00:00    
+ioconf.c                                                                                                    0%    0     0.0KB/s   --:-- ETAioconf.c                                                                                                  100%  411     0.4KB/s   00:00    
+tunix.c                                                                                                     0%    0     0.0KB/s   --:-- ETAtunix.c                                                                                                   100% 2267     2.2KB/s   00:00    
+tty.o                                                                                                       0%    0     0.0KB/s   --:-- ETAtty.o                                                                                                     100% 8044     7.9KB/s   00:00    
+sysentry.o                                                                                                  0%    0     0.0KB/s   --:-- ETAsysentry.o                                                                                                100%  560     0.6KB/s   00:00    
+test1.c                                                                                                     0%    0     0.0KB/s   --:-- ETAtest1.c                                                                                                   100%  122     0.1KB/s   00:00    
+tsystm.h                                                                                                    0%    0     0.0KB/s   --:-- ETAtsystm.h                                                                                                  100%  583     0.6KB/s   00:00    
+tty_public.h                                                                                                0%    0     0.0KB/s   --:-- ETAtty_public.h                                                                                              100%  415     0.4KB/s   00:00    
+tsyscall.h                                                                                                100%    0     0.0KB/s   00:00    
+crt0.s                                                                                                      0%    0     0.0KB/s   --:-- ETAcrt0.s                                                                                                    100%  135     0.1KB/s   00:00    
+makefile                                                                                                    0%    0     0.0KB/s   --:-- ETAmakefile                                                                                                  100% 2766     2.7KB/s   00:00    
+testqueue.o                                                                                                 0%    0     0.0KB/s   --:-- ETAtestqueue.o                                                                                               100% 4392     4.3KB/s   00:00    
+queue.o                                                                                                     0%    0     0.0KB/s   --:-- ETAqueue.o                                                                                                   100% 4484     4.4KB/s   00:00    
+testqueue.lnx                                                                                               0%    0     0.0KB/s   --:-- ETAtestqueue.lnx                                                                                             100%   18KB  17.6KB/s   00:00    
+queue.c                                                                                                     0%    0     0.0KB/s   --:-- ETAqueue.c                                                                                                   100% 2782     2.7KB/s   00:00    
+testqueue.c                                                                                                 0%    0     0.0KB/s   --:-- ETAtestqueue.c                                                                                               100% 1564     1.5KB/s   00:00    
+queue.h                                                                                                     0%    0     0.0KB/s   --:-- ETAqueue.h                                                                                                   100% 1324     1.3KB/s   00:00    
+README                                                                                                      0%    0     0.0KB/s   --:-- ETAREADME                                                                                                    100%  246     0.2KB/s   00:00    
+testqueue                                                                                                   0%    0     0.0KB/s   --:-- ETAtestqueue                                                                                                 100% 9928     9.7KB/s   00:00    
+makefile                                                                                                    0%    0     0.0KB/s   --:-- ETAmakefile                                                                                                  100%  846     0.8KB/s   00:00    
+ioconf.o                                                                                                    0%    0     0.0KB/s   --:-- ETAioconf.o                                                                                                  100% 2728     2.7KB/s   00:00    
+ioconf.h                                                                                                    0%    0     0.0KB/s   --:-- ETAioconf.h                                                                                                  100%  815     0.8KB/s   00:00    
+io.o                                                                                                        0%    0     0.0KB/s   --:-- ETAio.o                                                                                                      100% 4224     4.1KB/s   00:00    
+tunistd.h                                                                                                   0%    0     0.0KB/s   --:-- ETAtunistd.h                                                                                                 100%  183     0.2KB/s   00:00    
+syms                                                                                                        0%    0     0.0KB/s   --:-- ETAsyms                                                                                                      100% 1975     1.9KB/s   00:00    
+io_public.h                                                                                                 0%    0     0.0KB/s   --:-- ETAio_public.h                                                                                               100%  741     0.7KB/s   00:00    
+]0;tuser@tutor-vserver: ~/cs444/hw2tuser@tutor-vserver:~/cs444/hw2$ ls
+[0m[01;34mhw2[0m  typescript
+]0;tuser@tutor-vserver: ~/cs444/hw2tuser@tutor-vserver:~/cs444/hw2$ cd hw2/
+]0;tuser@tutor-vserver: ~/cs444/hw2/hw2tuser@tutor-vserver:~/cs444/hw2/hw2$ mtip -f testio.lnx 
+For command help, type ~?
+For help on args, rerun without args
+Code starts at 0x100100
+Using board # 1 
+Please type <CR> to confirm console setting: 
+Setting console dev to COM2Console: colour EGA+ 80x25
+COM1 at 0x03f8 (irq = 4) is a 16550A
+COM2 at 0x02f8 (irq = 3) is a 16550A
+
+                 Welcome to UMB Tutor for the PC
+   UMB Tutor is a 32-bit protected-mode PC debugger/downloader,
+       based on Linux, UMB Tutor for m68k, and remote gdb.
+UMB Tutor is free software and you are welcome to distribute copies
+of it under certain conditions.  There is no warranty for this program.
+The copyright and warranty provisions follow the Gnu general public
+license, available for view in gdb and elsewhere.  Full sources available.
+--bugs, suggestions, questions to eoneil@cs.umb.edu
+
+Exception 3 at EIP=00057a9b: Breakpoint
+Tutor> ~downloading testio.lnx
+
+...........Done.
+
+Download done, setting EIP to 100100.
+Tutor> ~downloading testio.lnx
+
+...........Done.
+
+Download done, setting EIP to 100100.
+Tutor> go 100100
+Running with device TTY1
+
+Trying simple write(4 chars)...
+hi!
+write of 4 returned 4
+<doing delay>
+Trying longer write (9 chars)
+abcdefghiwrite of 9 returned 9
+<doing delay>
+
+Trying write of 80-char string...
+AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZ[[\\]]^^__``aabbccddeeffgghh
+write returned 80
+<doing delay>
+
+Type 10 chars input to test typeahead while looping for delay...
+<doing delay>
+
+Got 10 chars into buf. Trying write of buf...
+0123456789
+Trying another 10 chars read right away...
+
+Got 10 chars on second read
+0123456789
+
+Now turning echo off--
+
+Type 20 chars input, note lack of echoes...
+<doing delay>
+
+Trying write of buf...
+01234567890123456789
+Asked for 20 characters; got 20
+
+EXIT CODE is 0
+Exception 3 at EIP=00100111: Breakpoint
+Tutor> exi   
+Tutor> 
+Quit handler: 
+killing process 2065 Leaving board #1
+]0;tuser@tutor-vserver: ~/cs444/hw2/hw2tuser@tutor-vserver:~/cs444/hw2/hw2$ exit
+exit
+
+Script done on Tue 03 Nov 2020 04:31:12 PM EST
