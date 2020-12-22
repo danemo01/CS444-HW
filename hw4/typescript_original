@@ -1,0 +1,107 @@
+Script started on Wed 16 Dec 2020 05:31:06 PM EST
+tuser@tutor-vserver:~/cs444$ mtip
+Usage: mtip [-b board#] [-f download-file]
+specify board by #: -b 1, etc.; defaults to scan.
+more flags: [-x debuglevel] -e <escchar>
+  Use ~ or Esc for mtip commands such as ~q or <Esc>q to quitfor more info on commands, type ~? or Esc? once program is running
+now scanning for free board...
+Using board # 1 
+Please type <CR> to confirm console setting: 
+Setting console dev to COM2Console: colour EGA+ 80x25
+COM1 at 0x03f8 (irq = 4) is a 16550A
+COM2 at 0x02f8 (irq = 3) is a 16550A
+
+                 Welcome to UMB Tutor for the PC
+   UMB Tutor is a 32-bit protected-mode PC debugger/downloader,
+       based on Linux, UMB Tutor for m68k, and remote gdb.
+UMB Tutor is free software and you are welcome to distribute copies
+of it under certain conditions.  There is no warranty for this program.
+The copyright and warranty provisions follow the Gnu general public
+license, available for view in gdb and elsewhere.  Full sources available.
+--bugs, suggestions, questions to eoneil@cs.umb.edu
+
+Exception 3 at EIP=00057a9b: Breakpoint
+Tutor> mdd 52000
+00052000    00000007 00001007 00002007 00003007 ......... ...0..
+Tutor> mdd 5210  138
+00052138    0004e007 0004f007 00050027 00051007 ........'.......
+Tutor> 
+00052148    00052027 00053007 00054007 00055067 ' ...0...@..gP..
+Tutor> mdd 52000
+00052000    00000007 00001007 00002007 00003007 ......... ...0..
+Tutor> md 3007       mdd 3007 2
+00003002    00000000 53300000 8e000020 53340000 ......0S .....4S
+Tutor> mdd 52000
+00052000    00000007 00001007 00002007 00003027 ......... ..'0..
+Tutor> mdd    s 3002 hi
+Tutor> mdd 3002
+00003002    00000006 53300000 8e000020 53340000 ......0S .....4S
+Tutor> m mdd 52000
+00052000    00000007 00001007 00002007 00003067 ......... ..g0..
+Tutor> ms 5200c 3006
+Tutor> mdd 52000
+00052000    00000007 00001007 00002007 00003006 ......... ...0..
+Tutor> mdd 3000
+00003000    Exception 14 at EIP=00060d9e: Page fault
+Tutor> rd all
+EAX=00003000 EBX=00000000   EBP=0006f510
+EDX=00000000 ECX=00060d98   ESP=0006f510
+ESI=0006f540 EDI=0006f53c   EIP=00060d9e
+EFLAGS=10206 (IF=1 SF=0 ZF=0 CF=0 OF=0)
+CS=0010 DS=0018 SS=0018 ES=0018 FS= 0018 GS=0018
+CR0=80050033   CR2=c0003000   CR3=51000
+IDTR=c005604c (limit 7ff)  GDTR=c0056854 (limit 4f)
+Tutor> rd    rs CR3 51000
+Tutor> md all
+0000000a    14 00 53 ff 00 f0 53 ff 00 f0 54 ff 00 f0 88 84 ..S...S...T.....
+Tutor> mdd     rd all
+EAX=00003000 EBX=00000000   EBP=0006f510
+EDX=00000000 ECX=00060d98   ESP=0006f510
+ESI=0006f540 EDI=0006f53c   EIP=00060d9e
+EFLAGS=10206 (IF=1 SF=0 ZF=0 CF=0 OF=0)
+CS=0010 DS=0018 SS=0018 ES=0018 FS= 0018 GS=0018
+CR0=80050033   CR2=c0003000   CR3=51000
+IDTR=c005604c (limit 7ff)  GDTR=c0056854 (limit 4f)
+Tutor> mdd 52000         ms 52000c 50007  7
+Exception 14 at EIP=00061056: Page fault
+Tutor> ms 5200c 2 40  5007
+Tutor> mdd   mdd 3200
+00003200    00000000 00000000 00000000 00000000 ................
+Tutor> ms 5 3200 cool
+Tutor> ms 3200 00000000
+Tutor> ms 3100   231 cool
+Tutor> mdd 3231    3   d 3231
+00003231    0000000c 00000000 00000000 00000000 ................
+Tutor> mdd    3231
+00003231    0c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ................
+Tutor> md 32311     5231
+00005231    0c 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ................
+Tutor> ms 3231 1234
+Tutor> md 3231
+00003231    34 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 4...............
+Tutor> md  ms d 3 5231
+00005231    34 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 4...............
+Tutor> ms 52 1c00 0000000
+Please type <CR> to confirm console setting: 
+Setting console dev to COM2Console: colour EGA+ 80x25
+COM1 at 0x03f8 (irq = 4) is a 16550A
+COM2 at 0x02f8 (irq = 3) is a 16550A
+
+                 Welcome to UMB Tutor for the PC
+   UMB Tutor is a 32-bit protected-mode PC debugger/downloader,
+       based on Linux, UMB Tutor for m68k, and remote gdb.
+UMB Tutor is free software and you are welcome to distribute copies
+of it under certain conditions.  There is no warranty for this program.
+The copyright and warranty provisions follow the Gnu general public
+license, available for view in gdb and elsewhere.  Full sources available.
+--bugs, suggestions, questions to eoneil@cs.umb.edu
+
+Exception 3 at EIP=00057a9b: Breakpoint
+Tutor> 
+Tutor> 
+Quit handler: 
+killing process 2018 Leaving board #1
+tuser@tutor-vserver:~/cs444$ exit
+exit
+
+Script done on Wed 16 Dec 2020 06:31:07 PM EST

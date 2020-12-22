@@ -1,0 +1,88 @@
+Q1.
+
+After dumping I've notice that the the PTE's showcase that the pages are cleaned. After converting
+the values of each PTE's. I can see that each's V,W,U bits are 1 (or 7 in this case). 
+Meaning that the first 4 PTE's are clean.
+
+PTE0= {vpn 0, hasn't been touched}
+
+
+
+Q2. 
+
+PD->PTE[pfn] = (pfn)000 - (pfn)fff
+
+Since we were able to obtain the first PTE, pfn being 0. We were able to find the PTE 
+that represented VA 50000, by understanding that one page represents 1024 memory location and
+we have verified (we can figure this out later) that the PA and VA are identical.
+
+Then after understanding that PFN = X is 0xX000-0xXfff then we've learned that the start of
+the tutor program is at 0x52140
+
+Q2B
+
+The ones that hasn't been touched is PTE 51, 53 and below PTE 50 is PTE 4f and PTE 4e
+
+
+
+
+Q3.
+
+We looked at the PTE's 3 flags and was shown that it has been accessed, after using md 3007
+and checking the PTE again, we see that the access bit has been set to 1. Then after doing
+ms 3007 hi we then check the PTE again and see that the dirty bit has been set to 1.
+
+(actions that occur)
+mdd 3002    | PTE has now been access and touched
+mdd 52000   | evaluate that
+ms  3002 hi | Now PTE is dirty and has some memory
+mdd 52000   | Evaluate it from that PTE[3] has been access and is dirty
+
+Q4. 
+
+(actions that occur)
+ms 5200c 3006   | access bit is now 0 and cannot be accessed from MMU 
+md 52000 | eval that PTE[3] access bit is 0
+mdd 3000 | access memory address from PTE[3]000 - PTE[3]fff
+
+As you can see we obtain a page fault, and I believe the Question is misleading.
+The caching is not implemented due to the pagefault occuring.
+
+If TLB was there, we would've been able to still access PTE[3]'s VA space due to
+the fact that TLB hasn't been updated? or does it reverify if any changes has happen
+to the PTE? 
+
+
+
+Question 4's issue is that we are still obtaining the page fault, need to ask professor skablayat
+
+Q5. 
+
+actions need
+rd all | check regs
+rs CR3 51000 | Does nothing because there's no TLB?
+rd all | regs are the same.
+
+After learning that Q4 doesn't have the TLB to verify this bug (TLB caching when we simply manipulate a PTE)
+Defintely 'rs CR3 51000' does nothing at all... no TLB there for way of flusing it.
+
+Q6. 
+ms 5200c 5007 | we technically copy the content for PTE
+ms 3231 cool | we randomly put something in
+md 3231 | we read that VA
+md 5231 | we read another VA, similar contents
+ms 3231 1234 | we write in VA 3000 but now it's going to be sent to PA 5000
+md 3231 | the content I wrote
+md 5231 | also here as well seems that PTE[3] and PTE[5 has the same space :o
+
+
+I was able to use MS to copy the PET from PET[3] to PET[5], by doing read and write from 
+the VA 0x3000-0x3fff the MMU will now assume that VA is referring to PA 0x5000-0x5fff
+
+Q7  
+
+ms 51c00 00000000
+
+
+I decided set ms 51c00 000000000, and the VMware gave me an error and then
+proceeding to restart tutor again.
